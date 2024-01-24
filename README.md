@@ -2,7 +2,7 @@
 
 ## Pre-requisites:
 
-1. Docker Desktop
+1. Docker 
 2. VSCode
 3. VSCode Dev Containers extension
 4. VSCode Docker extension
