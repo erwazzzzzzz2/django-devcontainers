@@ -21,9 +21,9 @@ Delete app.py
 
 ## Add the development container definition and connecting to it:
 
-Open your command palette, and select Remote-Containers: Add Development Container Configuration Files. You should get a prompt asking you how you would like to create your container configuration, and you should choose from docker-compose.yml. This should create a .devcontainer folder, with devcontainer.json inside it.
+Open your command palette, and select Dev-Containers: Add Development Container Configuration Files. You should get a prompt asking you how you would like to create your container configuration, and you should choose from docker-compose.yml. This should create a .devcontainer folder, with devcontainer.json inside it.
 
-Open your command palette again, and select Remote-Containers: Rebuild and Reopen in Container
+Open your command palette again, and select Dev-Containers: Rebuild and Reopen in Container
 
 You should see another window open with a number of things running. This is just VSCode setting up your development container. Wait until it’s done.
 
