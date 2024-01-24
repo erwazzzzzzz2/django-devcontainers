@@ -38,6 +38,7 @@ Check default page on http://127.0.0.1:8000
 ### Add Postgres
 
 In your docker-compose.yml file you should add one service for Postgres. 
+```
 
 version: '3.4'
 
@@ -64,7 +65,13 @@ services:
 
 volumes:
   pgdata:
+
+```
+
 Modify settings.py to point to the Postgres container (in production these values should ideally be read from environment variables):
+
+```
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -76,6 +83,9 @@ DATABASES = {
         'CONN_MAX_AGE': 60,
     }
 }
+
+```
+
 Add psycopg2-binary to your requirements.txt file, and pin it to the most recent version
 
 Rebuild and reopen the container again
