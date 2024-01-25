@@ -23,8 +23,7 @@ class Command(BaseCommand):
                 db_name = db_conn.settings_dict["NAME"]
                 db_host = db_conn.settings_dict["HOST"]
                 self.stdout.write(f"db name is = {db_name} and host = {db_host}")
-                # call_command("runserver", "127.0.0.1:8000")
-                # self.stdout.write(f"started server on 127.0.0.1:8000")
+
             except (OperationalError, PsycopgOperationalError):
                 self.stdout.write("Database unavailable, waiting 1 second...")
                 time.sleep(1)
