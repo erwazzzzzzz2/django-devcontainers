@@ -8,6 +8,14 @@ services:
       args:
         - DEV=true
       dockerfile: ./Dockerfile
+    environment:
+      - DB_HOST=postgresdb
+      - DB_NAME=devdb
+      - DB_USER=dbuser
+      - DB_PASS=changeme
+    depends_on:
+      - postgresdb
+
   postgresdb:
     image: postgres
     volumes:
@@ -15,7 +23,7 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_DB=postgresdb
+      - POSTGRES_DB=devdb
       - POSTGRES_USER=dbuser
       - POSTGRES_PASSWORD=changeme
 volumes:
