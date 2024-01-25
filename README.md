@@ -93,7 +93,7 @@ Rebuild and reopen the container again
 ## Check your set up 
 
 1. In the terminal use pip freeze to see dependencies
-2. In terminal run cat /etc/os-release  which should show the OS as Debian  . This shows you are in the container.
+2. In terminal run cat /etc/os-release  which should show the OS as Debian (the image OS) . This shows you are in the container.
 
 ## Add formatting and Linting
 
