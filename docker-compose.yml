@@ -5,8 +5,6 @@ services:
     image: dev4containerdjango
     build:
       context: .
-      args:
-        - DEV=true
       dockerfile: ./Dockerfile
     environment:
       - DB_HOST=postgresdb
