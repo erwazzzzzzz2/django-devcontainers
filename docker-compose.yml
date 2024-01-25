@@ -8,15 +8,17 @@ services:
       args:
         - DEV=true
       dockerfile: ./Dockerfile
-  postgresdb:
-    image: postgres
     volumes:
-      - pgdata:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_DB=postgresdb
-      - POSTGRES_USER=dbuser
-      - POSTGRES_PASSWORD=changeme
-volumes:
-  pgdata:
+      - ./app:/app
+#   postgresdb:
+#     image: postgres
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
+#     ports:
+#       - 5432:5432
+#     environment:
+#       - POSTGRES_DB=postgresdb
+#       - POSTGRES_USER=dbuser
+#       - POSTGRES_PASSWORD=changeme
+# volumes:
+#   pgdata:
