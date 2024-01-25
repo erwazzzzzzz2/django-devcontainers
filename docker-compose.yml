@@ -13,6 +13,9 @@ services:
       - DB_NAME=devdb
       - DB_USER=dbuser
       - DB_PASS=changeme
+      - DB_PORT=5432
+    command: >
+      sh -c "python manage.py wait_for_db"
     depends_on:
       - postgresdb
 
