@@ -17,7 +17,7 @@ services:
       - postgresdb
 
   postgresdb:
-    image: postgres
+    image: postgres:alpine3.19
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
