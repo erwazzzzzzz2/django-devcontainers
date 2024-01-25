@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    volumes:
+      - ./app:/app
     environment:
       - DB_HOST=postgresdb
       - DB_NAME=devdb
