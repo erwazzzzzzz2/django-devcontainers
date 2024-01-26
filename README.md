@@ -53,28 +53,35 @@ In your docker-compose.yml file you should add one service for Postgres.
 version: '3.4'
 
 services:
-  testproject:
-    image: testproject
+  dev4containerdjango:
+    image: dev4containerdjango
     build:
       context: .
       dockerfile: ./Dockerfile
-    ports:
-      - 8000:8000
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=postgresdb
+      - DB_NAME=devdb
+      - DB_USER=dbuser
+      - DB_PASS=changeme
+      - DB_PORT=5432
     depends_on:
       - postgresdb
-  postgresdb:
-    image: postgres
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_DB=testproject
-      - POSTGRES_USER=testproject
-      - POSTGRES_PASSWORD=hello
 
+  postgresdb:
+    image: postgres:15-alpine
+    volumes: 
+      - dev-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=changeme
 volumes:
-  pgdata:
+  dev-db-data:
 
 ```
 
@@ -83,14 +90,14 @@ Modify settings.py to point to the Postgres container (in production these value
 ```
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'testproject',
-        'USER': 'testproject',
-        'PASSWORD': "hello",
-        'HOST': "postgresdb",
-        'PORT': '5432',
-        'CONN_MAX_AGE': 60,
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASS"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
+        "CONN_MAX_AGE": 60,
     }
 }
 
