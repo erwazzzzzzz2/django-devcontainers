@@ -11,7 +11,7 @@
 
 The application uses VSCode Dev Containers. [Set up your VSCode to open from the terminal](https://www.freecodecamp.org/news/how-to-open-visual-studio-code-from-your-terminal/) . Just navigate to the root of the project and in Linux use  ``` code . ``` to open VSCode , you should be prompted to open the application in a container. See [Dev Containers for more information](https://code.visualstudio.com/docs/devcontainers/containers)
 
-You will probably be prompted to load the python extension , unfortunately this is a bug and hasn't been resolved yet, so just do it, otherwise Flake8 linting and Black formatting will not be avaliable. [Known issues](## Know Issues)
+You will probably be prompted to load the python extension , unfortunately this is a bug and hasn't been resolved yet, so just do it, otherwise Flake8 linting and Black formatting will not be avaliable. [Known issues](##Know Issues)
 
 In a terminal use ``` python manage.py run_app ``` this will open the app in a browser at http://127.0.0.1:8000/
 
