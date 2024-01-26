@@ -135,7 +135,7 @@ Add the following to the evcontainers.json (see known issue (2))
    
 ## Know Issues:
 
-1. Sometimes I’ve found that VSCode would fail to forward the port automatically now that we’ve published port 8000 in the docker-compose.yml, which conflicts with the port forwarding feature. In that case you should try runserver by binding to 0.0.0.0, i.e. python manage.py runserver 0.0.0.0:8000. Or alternatively, you could also just remove ports from the docker-compose.yml file.
+1. Sometimes I’ve found that VSCode would fail to forward the port automatically now that we’ve published port 8000 in the docker-compose.yml, which conflicts with the port forwarding feature. In that case you should try runserver by binding to 0.0.0.0, i.e. python manage.py runserver 0.0.0.0:8000. Or alternatively, you could also just remove ports from the docker-compose.yml file as done in this example.
 
 2. When formatting and linting are enable you will be requeste to install the Python extension of VSCode. This appears to be a bug where the extension is slow / isn't installed as it should be and the manual install is required see [GitHub Issue 1967784](https://github.com/microsoft/vscode/issues/196794)
    
