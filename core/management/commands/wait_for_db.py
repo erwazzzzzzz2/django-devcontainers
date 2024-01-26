@@ -3,7 +3,6 @@ Django command to wait for the database to be available.
 """
 import time
 
-from django.core.management import call_command
 from django.core.management.base import BaseCommand
 from django.db import connections
 from django.db.utils import OperationalError
@@ -20,6 +19,7 @@ class Command(BaseCommand):
         while not db_conn:
             try:
                 db_conn = connections["default"]
+
                 db_name = db_conn.settings_dict["NAME"]
                 db_host = db_conn.settings_dict["HOST"]
                 self.stdout.write(f"db name is = {db_name} and host = {db_host}")
