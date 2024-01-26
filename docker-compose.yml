@@ -8,26 +8,25 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ./app:/app
+    command: >
+      sh -c "python manage.py wait_for_db &&
+             python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=postgresdb
       - DB_NAME=devdb
       - DB_USER=dbuser
       - DB_PASS=changeme
       - DB_PORT=5432
-    command: >
-      sh -c "python manage.py wait_for_db"
     depends_on:
       - postgresdb
 
   postgresdb:
-    image: postgres:alpine3.19
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
+    image: postgres:15-alpine
+    volumes: 
+      - dev-db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=devdb
       - POSTGRES_USER=dbuser
       - POSTGRES_PASSWORD=changeme
 volumes:
-  pgdata:
+  dev-db-data:
