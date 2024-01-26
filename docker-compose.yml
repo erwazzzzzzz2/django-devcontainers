@@ -5,20 +5,26 @@ services:
     image: dev4containerdjango
     build:
       context: .
-      args:
-        - DEV=true
       dockerfile: ./Dockerfile
     volumes:
       - ./app:/app
-#   postgresdb:
-#     image: postgres
-#     volumes:
-#       - pgdata:/var/lib/postgresql/data
-#     ports:
-#       - 5432:5432
-#     environment:
-#       - POSTGRES_DB=postgresdb
-#       - POSTGRES_USER=dbuser
-#       - POSTGRES_PASSWORD=changeme
-# volumes:
-#   pgdata:
+    environment:
+      - DB_HOST=postgresdb
+      - DB_NAME=devdb
+      - DB_USER=dbuser
+      - DB_PASS=changeme
+      - DB_PORT=5432
+    depends_on:
+      - postgresdb
+
+  postgresdb:
+    image: postgres:15-alpine
+    volumes: 
+      - dev-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=changeme
+volumes:
+  dev-db-data:
+

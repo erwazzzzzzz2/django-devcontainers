@@ -12,7 +12,13 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-# Install pip requirements
+# Install the required packages to enable intallation of psycopg2
+RUN apt-get update && \
+    apt-get install -y libpq-dev gcc &&\
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install pip requirements we don't use a virtual env
 COPY requirements.txt .
 RUN python -m pip install -r requirements.txt
 
