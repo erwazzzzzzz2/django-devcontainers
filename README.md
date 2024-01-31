@@ -26,7 +26,7 @@ A helper command rename_project has been created follow these steps
 2. Then rename the project.
 
 
-## Deatils of setting up default Django project:
+## Details of setting up default Django project:
 
 Create an empty app.py file in the directory. 
 
