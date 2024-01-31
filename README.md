@@ -17,6 +17,15 @@ In a terminal use ``` python manage.py run_app ``` this will open the app in a b
 
 You should see "Nice!"
 
+## How to rename the project
+
+A helper command rename_project has been created follow these steps
+
+1. Run ``` python manage.py rename_project <old_name> <new_name>
+
+2. Then rename the project.
+
+
 ## Deatils of setting up default Django project:
 
 Create an empty app.py file in the directory. 
